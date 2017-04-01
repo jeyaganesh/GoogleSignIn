@@ -21,6 +21,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
@@ -32,6 +33,26 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private TextView txtstatus, txtname, txtemail;
     private GoogleApiClient gac;
     private ImageView i;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        OptionalPendingResult<GoogleSignInResult> opr=Auth.GoogleSignInApi.silentSignIn(gac);
+        if(opr.isDone()) {
+            GoogleSignInResult result = opr.get();
+            handleSignInResult(result);
+        }
+        else {
+        opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+            @Override
+            public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
+                handleSignInResult(googleSignInResult);
+            }
+        });
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         );
     }
 
+
     private void signin() {
         Intent signinIntent = Auth.GoogleSignInApi.getSignInIntent(gac);
         startActivityForResult(signinIntent, 1);
@@ -106,10 +128,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .show();
 
         } else
+        {
             //    txtstatus.setText("authentication failure");
             // Snackbar snackbar=new Snackbar.make(CoordinatorLayout,
-            Snackbar.make(findViewById(R.id.content), "authentication failure", Snackbar.LENGTH_LONG)
-                    .show();
+          //  Snackbar.make(findViewById(R.id.content), "authentication failure", Snackbar.LENGTH_LONG)
+          //          .show();
         //snackbar.show();
     }
 
