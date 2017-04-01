@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "925886733236",
+    "project_id": "testsignin-c1a51"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925886733236:android:9636eff74c49b0ca",
+        "android_client_info": {
+          "package_name": "com.devlup.jeyaganesh.signin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925886733236-vs6fuqpihfis96e829md202velt2lhro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devlup.jeyaganesh.signin",
+            "certificate_hash": "f23f60ace6588b4e4c4b04b66f0e31953f0d5d67"
+          }
+        },
+        {
+          "client_id": "925886733236-9dpr8obthkun82419625n9je013rjmia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBWjUsMvtenYMY9MbR-cxu-w4v_-FNDq0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
